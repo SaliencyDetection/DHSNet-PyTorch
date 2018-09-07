@@ -13,8 +13,8 @@ class MyData(data.Dataset):
         self.root = root
         self._transform = transform
 
-        img_root = os.path.join(self.root, 'images')
-        gt_root = os.path.join(self.root, 'masks')
+        img_root = os.path.join(self.root, 'RGB')
+        gt_root = os.path.join(self.root, 'gt')
         file_imgnames = os.listdir(img_root)
         self.img_names = []
         self.gt_names = []
@@ -80,7 +80,7 @@ class MyTestData(data.Dataset):
         self.root = root
         self._transform = transform
 
-        img_root = os.path.join(self.root, 'images')
+        img_root = os.path.join(self.root, 'RGB')
         file_names = os.listdir(img_root)
         self.img_names = []
         self.names = []

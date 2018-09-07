@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import torchvision
+import torch.nn.functional as F
 class RCL_Module(nn.Module):
     def __init__(self,in_channels):
         super(RCL_Module, self).__init__()
@@ -129,7 +130,7 @@ class Feature(nn.Module):
         x = self.upsample(x)
         x = self.layer4.forward(c1, x)
         x5 = x
-        return x1,x2,x3,x4,x5
+        return F.sigmoid(x1),F.sigmoid(x2),F.sigmoid(x3),F.sigmoid(x4),F.sigmoid(x5)
 
     def __copy_param(self):
 
