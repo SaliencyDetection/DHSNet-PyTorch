@@ -11,6 +11,6 @@ The papre can be found [here](https://www.cv-foundation.org/openaccess/content_c
 You can run it from the command line as such:
 >python main.py --data_root "your_dataset_location" --val_rate "validation rate"
 
-The results are stored in ./result.csv
+The validation results(F_measure,MAE) are stored in ./result.csv
 
 Some functions are borrowed from [here](https://github.com/NVIDIA/flownet2-pytorch)
