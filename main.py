@@ -18,14 +18,8 @@ parser.add_argument('-b', '--batch-size', default=1, type=int)
 parser.add_argument('-e', '--epochs', default=100, type=int)
 parser.add_argument('--start_epoch', default=0, type=int)
 parser.add_argument('--total_epochs', default=100, type=int)
-parser.add_argument('--save-dir', default='model/saved', type=str,
-                    help='directory of saved model (default: model/saved)')
-parser.add_argument('--save-freq', default=1, type=int,
-                    help='training checkpoint frequency (default: 1)')
-parser.add_argument('--dataset', default='DUTS', type=str)
 
-parser.add_argument('--train',action= 'store_true')
-parser.add_argument('--inference',action= 'store_true')
+parser.add_argument('--dataset', default='DUTS', type=str)
 parser.add_argument('--lr',default=1e-5)
 parser.add_argument('--data_root',required=True)
 parser.add_argument('--cache',default='./cache/')
@@ -63,7 +57,7 @@ def main(args):
     model = Feature(RCL_Module)
     model.cuda()
     criterion = nn.BCELoss()
-    optimizer_feature = torch.optim.Adam(model.parameters(), lr=1e-5)
+    optimizer_feature = torch.optim.Adam(model.parameters(), lr=args.lr)
 
     train_losses = []
 
