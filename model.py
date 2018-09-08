@@ -113,11 +113,10 @@ class Feature(nn.Module):
         c3 = self.conv3(c2)
         c4 = self.conv4(c3)
         x = self.conv5(c4)
-
-        x = x.view(1, -1)
+        bz=x.shape[0]
+        x = x.view(bz, -1)
         x = self.fc(x) #generate the SMRglobal
-        x = x.view(1,28,-1)
-        x = x.unsqueeze(0)
+        x = x.view(bz,1,28,-1)
         x1 = x
         x = self.layer1.forward(c4,x)
         x2 = x
