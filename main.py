@@ -114,7 +114,6 @@ def main(args):
             for ib, (input, img_name, _) in enumerate(val_loader):
                 inputs = Variable(input).cuda()
                 _, _, _, _, output = model.forward(inputs)
-                output = functional.sigmoid(output)
                 out = output.data.cpu().numpy()
                 for i in range(len(img_name)):
                     imsave(os.path.join(val_output_root, img_name[i] + '.png'), out[i,0], cmap='gray')
